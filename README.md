@@ -1,6 +1,6 @@
 ## DETAILS
 
-**Google Project Id:** hackathon-420406 
+**Google Project Id:** hackathon-420406<br>
 **Gemini API Used:** Vertex AI
 
 **DESCRIPTION**
@@ -33,7 +33,7 @@ Once the dependencies are installed, you can start the server by running:
 
 `python app.py`
 
-**Note** The server will run on Port '9000'. Please ensure that no other service is running on the Port.
+**Note** The server will run on Port `9000`. Please ensure that no other service is running on the Port.
 
 This will launch the server application. The specific behavior of the server will depend on the implementation within app.py.
 

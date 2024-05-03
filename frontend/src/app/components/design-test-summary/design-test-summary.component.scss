@@ -1,0 +1,126 @@
+@use "../../../styles/variables/sass-color-variables";
+
+.test-summary-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.summary-percentage {
+  display: flex;
+  // justify-content: space-between;
+  justify-content: start;
+  align-items: center;
+  //  back
+}
+
+.template-img {
+  border-style: dashed;
+  border-color: #808080;
+  border-radius: 10px;
+  height: 200px;
+  width: 250px;
+}
+
+.template-img img {
+  height: 196px;
+  width: 246px;
+}
+
+.design-percentage {
+  padding: 0 30px;
+}
+
+.design-title {
+  font-size: 2.5em;
+  color: var(--primary-light-gray);
+  line-height: 1.5;
+}
+
+.percentage {
+  font-size: 2.5em;
+  line-height: 1.5;
+}
+
+.danger {
+  color: var(--primary-red);
+}
+
+.green {
+  color: #07c303;
+}
+
+.section-title {
+  font-size: 22px;
+  color: var(--primary-blue);
+  font-weight: 700;
+  padding: 10px 0;
+}
+
+.summary {
+  // background: var(--primary-light-blue);
+  padding: 30px;
+  border-radius: 10px;
+  line-height: 1.5;
+}
+
+.result-summary {
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.list-container ::ng-deep .mat-list-item {
+  position: relative;
+}
+
+.list-container ::ng-deep .mat-list-item::before,
+.list-container ::ng-deep .mat-list-item::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  border-bottom: 1px dotted #ccc;
+  pointer-events: none;
+}
+
+.list-container ::ng-deep .mat-list-item::before {
+  top: 0;
+}
+
+.score-card-section {
+  display: flex;
+  // justify-content: space-between;
+  justify-content: start;
+  align-items: center;
+  background: var(--primary-light-blue);
+  margin-bottom: 20px;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.score-card-section-title {
+  font-size: 1.25em;
+  font-weight: 700;
+  color: #424952;
+}
+
+.rating {
+  font-size: 1.4em;
+  color: #424952;
+}
+
+.score {
+  font-weight: 600;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+button.submit {
+  border-radius: 5px;
+  background: var(--primary-blue);
+  border: 0;
+  color: #fff;
+  padding: 10px;
+  margin-right: 30px;
+}

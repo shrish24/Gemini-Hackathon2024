@@ -1,0 +1,30 @@
+@use "../../../styles/variables/sass-color-variables";
+
+:root {
+  --header-height: 72px;
+}
+
+/* Calculate the available height for the feature-container */
+.main-content {
+  background: var(--primary-white);
+  // height: calc(100vh - 72px);
+}
+
+.main-container {
+  display: flex;
+  // justify-content: space-between;
+  // align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+main {
+  width: 100%;
+  min-height: calc(100vh - 103px);
+}
+
+.main-content.home-content {
+  /* Styles for the home component background color */
+  background: var(--primary-light-blue);
+  min-height: calc(100vh - 103px); // new
+}

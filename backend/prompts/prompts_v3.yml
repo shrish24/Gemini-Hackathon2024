@@ -1,0 +1,175 @@
+prompts:
+  image_desc: |
+    You are UI/UX Designer and have knowledge on FIGMA tool.
+    Tell me What this image depicts.
+    What are the different design elements used?
+  text_prompt: |
+    Introduction: You are experienced front-end developer with in-depth knowledge of HTML and CSS.
+
+    Task: Generate HTML & CSS based on reference image and user interface (UI) specifications.
+
+    Input:
+    image1: Reference image for the web page design.
+    image_desc_output : The text containing the details of the design elements, layout and structure used in reference image.
+
+    Output:
+    index.html: Complete HTML code for the web page.
+    style.css: Complete, well-structured CSS code responsible for styling the HTML elements and achieving the visual design.
+
+    Requirements:
+
+    HTML:
+    Use a clear and logical code structure.
+    Add all the Design elements in HTML code which are specified in {image_desc_output}.
+    All the images are in the "generated_images" folder, so append the path for all the img src placeholder. Example generated_images/<image.png>
+    Add alt properties to images with descriptive summaries of the content (avoid using names).
+    Use .png extension for images.
+
+    Background Image:
+    Incorporate a background image: The generated code should include a background image for header, or hero section, based on the design in image1.
+
+    CSS:
+    Ensure all images and icons are resized appropriately within their containers.
+    Flexbox: Use CSS flexbox properties like display: flex, flex-wrap: wrap, and justify-content and align-items to control the layout and alignment of icons within the grid container, aiming to match the size and spacing in image1.
+    Use the filename "background_image" as a placeholder for the background image.
+    Logo, Footer Image, and User Image: In the generated CSS, ensure these specific elements (logo, footer image, and user image) always have a width of 40 pixels and a height of 40 pixels.
+    Define these dimensions explicitly using CSS properties like width: 40px; and height: 40px;.
+
+    Additional Specification
+    .logo img and footer img should have width: 40px; and height: 40px; specified explicitly in generated CSS.
+
+    Typography:
+    Use appropriate font size,heading elements style, line heights, and letter spacing for readability.
+
+    Interactive Elements:
+    Make buttons and links visually distinct from regular text.
+
+    Color Contrast:
+    Implement a color scheme with high contrast for accessibility.
+
+    Image Summary for Alt Text:
+    Dont use names in alt Text like John Doe, instead use a descriptive alt such as user icon depicting a person.
+    Provide descriptive summaries for each icon or image in image1.
+    Use these summaries in the corresponding HTML img tag's alt property.
+  image_prompt: |
+    The theme of the webpage is listed as follows: 
+    "Test_segment": "Visual Appeal",
+    "Test_objective": "Test the design for usability",
+    "Target_Users": "Corporate Professional"
+    Taking inspiration from the theme,Generate an image for the provided text:
+  report_generation_prompt: |
+    ## UX Design Principles Comparison Report
+    
+    **Introduction:**
+    
+    This report compares multiple provided images, based on core UX design principles. The goal is to identify which image offers a better user experience (UX) by analyzing their strengths and weaknesses.
+    
+    1. **Evaluation Criteria:** We will evaluate the images based on the following UX design principles:
+    
+        - **Balance:** Balance refers to the arrangement of elements in a way that feels visually stable and harmonious. It can be symmetrical (elements mirrored across a center line) or asymmetrical (elements balanced with different weights).
+        - **Emphasis:** This principle focuses on drawing attention to specific elements within the design. Techniques like size, color, contrast, and isolation can be used to highlight key information or calls to action.
+        - **Proportion:** Proportion refers to the relative size and scale of elements in relation to each other. Maintaining proper proportion creates a sense of order and visual hierarchy.
+        - **Repetition:** Repeating design elements throughout the interface creates a sense of unity and consistency. This can be through consistent use of colors, fonts, icons, or layout patterns.
+        - **Rhythm:** Rhythm creates a sense of visual flow and movement in the design. This can be achieved through repetition of elements with variations in size, spacing, or color.
+        - **Pattern:** Patterns are recurring visual arrangements that help users understand the structure and organization of the interface. They can improve learnability and predictability.
+        - **Whitespace (Negative Space):** Whitespace, or negative space, refers to the empty areas between elements. Using whitespace effectively helps to avoid clutter and improves readability.
+        - **Movement:** Movement can be used to create a sense of dynamism and guide the user's attention. This can be through subtle animations, micro-interactions, or video elements.
+        - **Variety:** While consistency is important, incorporating some variety can keep the user engaged. This can be achieved through subtle variations in color, typography, or layout elements.
+        - **Unity:** Unity refers to the overall feeling of cohesion and coherence within the design. All elements should work together to create a unified and consistent visual experience.
+        additional_parameters
+    
+    2. **Evaluation Process:**
+    
+        - Each principle will be scored on a scale of 1 (lowest) to 10 (highest). Evaluators will provide clear justifications for their assigned scores for each image.
+        - Scores for each image across all principles will be averaged in percentage to provide a holistic UX rating.
+    
+    3. **Data Presentation:
+        - The evaluation results should include summarizing the scores for each principle and the average UX rating for each image.
+    
+    **Deliverables:**
+    
+    - Principles Scores and clear justifications for their assigned scores for each image.
+    - A written analysis detailing the strengths and weaknesses of each image based on UX design principles. This analysis should leverage the assigned scores and justifications.
+    - A recommendation on which image provides a superior user experience based on the evaluation and average UX rating.
+    - Actionable Recommendations:
+        Based on the evaluation, Gemini can provide detailed points outlining specific changes that can be made to both Image 1 and Image 2 to further enhance user experience. These recommendations will be tailored to address the identified weaknesses in each image while adhering to core UX design principles.
+    - Format the output as JSON string capturing introduction. Make sure output is a well-formatted JSON. Use double quote for attributes and values
+    - The JSON output should comprise of the following:
+        - Summary of what the report is about
+        - Evaluation - Principles scores along with clear justifications for their assigned scores for each image, example: Evaluation": {"Image_1": {"Balance": {"Score": 8,"Justification": ""}}}
+        - Average UX Rating
+        - Strengths and Weakness for both the images
+        - Actionable_recommendation
+        - Result Summary specifying which image performed better and why
+    
+    
+    **Next Steps:**
+    
+    Based on the report's findings, you can choose to:
+    
+    - Implement the recommended image.
+    - Refine both the images based on the identified weaknesses and Gemini's actionable recommendations to create a more user-centric design.
+    - Provide detailed points based on the changes which can be made in both the images to achieve good UX ratings.Keep in mind the UX principles.
+  text_prompt_webpage: |
+    Task: Generate HTML & CSS based on image and user interface (UI) specifications
+
+    Input:
+    designing_for: Defines the purpose and theme of the webpage, specifying the intended audience and overall aesthetic.
+    target_users:  Identifies the demographic and user personas the webpage is catering to, including their preferences and needs.
+    description: features to include in HTML and CSS.
+
+    Output:
+    index.html: Complete HTML code for the web page. 
+    style.css: Complete Well-structured CSS code with proper indentation.
+
+    **Requirements:
+
+    HTML:
+    Utilize the "generated_images" folder for all image references, appending the appropriate paths for img src placeholders.
+    Incorporate images with descriptive alt properties, using .png extension for images.
+    Enhance semantic structure by encapsulating navigation and search bar within a <header> tag.
+
+    CSS:
+    Style navigation bar, search bar, hero section, and other elements to ensure visual appeal and user-friendliness.
+    Establish clear hierarchy and readability by styling heading elements (H1, H2, H3). Example: Heading of hero Section to be H1.
+    Focus on precise image and icon sizing and placement throughout the webpage.
+    Select suitable fonts, font sizes, line heights, and letter spacing to maintain cohesive aesthetics.
+
+    Button Styling:
+    Apply CSS styles to the buttons to make them visually distinct and attractive, incorporating background colors, borders, shadows, and hover effects.
+
+    Font Styling, Sizing and Coloring:
+    Choose appropriate fonts and define font sizes, weights, and styles for clear and readable button text.
+    Choose fonts that enhance readability and align with the webpage's design aesthetic.
+    Define consistent font sizes for different elements, using relative units for scalability.
+    Choose font colors that harmonize with the webpage's overall color scheme, including the hero section.
+
+    Integration with Hero Section:
+    Ensure that button styling blends seamlessly with the hero section design, using similar colors, fonts, or visual elements.
+    Position buttons strategically within the hero section to guide user interaction and emphasize important calls-to-action.
+
+    Color Styling:
+    Select a complementary color palette for text,buttons, background,etc.
+    Ensure sufficient color contrast between text and background for accessibility.
+
+    Hero Section:
+    Maintain visual balance by avoiding excessive enlargement of images.
+
+    Navigation Bar:
+    Prevent clutter by spacing each category appropriately for improved navigation experience.
+
+    Search Bar (if required):
+    Position prominently for easy user access.
+    Provide clear labels to facilitate effective search input.
+
+    Image Summary for Alt Text:
+    Use descriptive alt text instead of names (e.g., "user icon depicting a person", "A captivating image of a travel destination").
+    Provide summaries for each icon or image to enhance accessibility.
+
+    Additional Considerations:
+    Maintain balanced layout to prevent any element from dominating excessively, including hero image and header.
+  image_prompt_webpage: |
+    The theme of the webpage is as follows:
+    {designing_for}: What are you designing and the theme of the webpage
+    {target_users}:  Who you're designing for
+    Taking inspiration from the theme,Generate an image for the provided text: 

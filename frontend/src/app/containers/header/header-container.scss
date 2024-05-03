@@ -1,0 +1,21 @@
+header {
+  background-color: #116acc;
+  width: 100%;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 72px;
+}
+
+.logo {
+  font-weight: bold;
+}
+
+.user {
+  font-style: italic;
+}

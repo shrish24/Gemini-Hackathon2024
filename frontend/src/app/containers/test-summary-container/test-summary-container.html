@@ -1,0 +1,151 @@
+<div
+  class=""
+  *ngIf="this.improveDesignsLoading || this.improveDesignError || this.improvedDesignVariations; else testSummary"
+>
+  <div class="heading">
+    <p>
+      <button
+        mat-flat-button
+        class="title back-button"
+        (click)="backToResults()"
+      >
+        <mat-icon svgIcon="icon-chevron-left" class="icon"></mat-icon>
+        {{improvingDesignName || 'Design B'}}
+      </button>
+    </p>
+    <p class="secondary-text">Here are the AI generated variations!</p>
+  </div>
+  <div *ngIf="this.improveDesignError">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Error</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>{{this.improveDesignErrorMsg}}</p>
+        <p>
+          <button mat-flat-button class="geneate-btn" (click)="backToResults()">
+            Back to results
+          </button>
+        </p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div *ngIf="this.improveDesignsLoading" class="body">
+    <mat-spinner
+      [diameter]="70"
+      [strokeWidth]="2"
+      class="spinner"
+    ></mat-spinner>
+    <p>
+      Please stay tuned. It may take up to 5 minutes to generate variations as
+      per the design or specifications.
+    </p>
+  </div>
+  <div class="image-grid" *ngIf="this.improvedDesignVariations">
+    <div
+      class="image-container"
+      *ngFor="let designVarition of this.improvedDesignVariations; index as i"
+    >
+      <img
+        src="{{ 'data:image/png;base64,' + designVarition }}"
+        alt="{{improvingDesignName + '_variation_' + i}}"
+      />
+      <button
+        mat-flat-button
+        class="download-btn"
+        (click)="downloadImage(improvingDesignName + '_variation_' + i, designVarition)"
+      >
+        <mat-icon svgIcon="icon-download"></mat-icon>Download
+      </button>
+    </div>
+
+    <!-- <div class="image-container">
+      <img src="{{'data:image/png;base64,' + image2}}" alt="Image 1" />
+      <button
+        mat-flat-button
+        class="download-btn"
+        (click)="downloadImage('Design_2', image2)"
+      >
+        <mat-icon svgIcon="icon-download"></mat-icon>Download
+      </button>
+    </div>
+    <div class="image-container">
+      <img src="../../../assets/img/general/design1.png" alt="Image 1" />
+      <button mat-flat-button class="download-btn">
+        <mat-icon svgIcon="icon-download"></mat-icon>Download
+      </button>
+    </div>
+    <div class="image-container">
+      <img src="../../../assets/img/general/design2.png" alt="Image 1" />
+      <button mat-flat-button class="download-btn">
+        <mat-icon svgIcon="icon-download"></mat-icon>Download
+      </button>
+    </div>
+    <div class="image-container">
+      <img src="../../../assets/img/general/design1.png" alt="Image 1" />
+      <button mat-flat-button class="download-btn">
+        <mat-icon svgIcon="icon-download"></mat-icon>Download
+      </button>
+    </div>
+    <div class="image-container">
+      <img src="../../../assets/img/general/design2.png" alt="Image 1" />
+      <button mat-flat-button class="download-btn">
+        <mat-icon svgIcon="icon-download"></mat-icon>Download
+      </button>
+    </div>
+    <div class="image-container">
+      <img src="../../../assets/img/general/design1.png" alt="Image 1" />
+      <button mat-flat-button class="download-btn">
+        <mat-icon svgIcon="icon-download"></mat-icon>Download
+      </button>
+    </div> -->
+  </div>
+  <mat-divider class="divider"></mat-divider>
+  <div class="actions">
+    <button class="gray-button" (click)="backToResults()">
+      <div class="button-content">
+        <mat-icon svgIcon="icon-arrow-back"></mat-icon>
+        <span class="button-text">Back to results</span>
+      </div>
+    </button>
+    <button class="submit left-15" (click)="regenerateVariations()">
+      <div class="button-content">
+        <mat-icon svgIcon="icon-restart-alt"></mat-icon>
+        <span class="button-text">Regenerate</span>
+      </div>
+    </button>
+    <!-- <button class="gray-button" (click)="backToResults()">
+      <mat-icon svgIcon="icon-arrow-back"></mat-icon>Back to results
+    </button>
+    <button class="left-15 submit" (click)="regenerateVariations()">
+      <mat-icon svgIcon="icon-restart-alt"></mat-icon>Regenerate
+    </button> -->
+  </div>
+</div>
+<ng-template #testSummary>
+  <div class="generate-with-ai">
+    <div class="heading">
+      <p class="title">Test Summary</p>
+      <p class="secondary-text">{{responseData.summary}}</p>
+    </div>
+    <div class="cards-container">
+      <mat-card *ngFor="let designTestSummary of responseData.data">
+        <gemini-design-test-summary
+          [designTestSummary]="designTestSummary"
+          (getImproveDesign)="getImproveDesign($event)"
+        ></gemini-design-test-summary>
+      </mat-card>
+      <!-- <mat-card>
+        <gemini-design-test-summary
+          [designTestSummary]="designTestSummaryOne"
+        ></gemini-design-test-summary>
+      </mat-card>
+      <mat-card>
+        <gemini-design-test-summary
+          [designTestSummary]="designTestSummaryTwo"
+        ></gemini-design-test-summary>
+      </mat-card> -->
+    </div>
+  </div>
+</ng-template>

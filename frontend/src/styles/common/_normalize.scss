@@ -1,0 +1,119 @@
+html {
+  font-family: "Source Sans Pro", sans-serif;
+  // font-size: 16px;
+  height: 100%;
+}
+
+body {
+  background: #fff;
+  height: 100%;
+  margin: 0px;
+  min-width: 1024px;
+  padding: 0px;
+}
+
+/* Typography */
+/*
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+strong,
+small,
+span,
+label {
+  font-size: 1em;
+  margin: 0;
+  padding: 0;
+}*/
+
+/* Form elements */
+textarea,
+select,
+button,
+submit {
+  font-family: "Ubuntu", sans-serif;
+  -moz-appearance: none !important;
+  -webkit-appearance: none !important; /* We can use !important here, because it's not something we should want to overwrite back... */
+}
+
+input {
+  font-family: "Ubuntu", sans-serif;
+
+  &[type="text"],
+  &[type="date"],
+  &[type="time"],
+  &[type="email"],
+  &[type="tel"],
+  &[type="password"] {
+    font-family: "Ubuntu", sans-serif;
+    -moz-appearance: none !important;
+    -webkit-appearance: none !important; /* We can use !important here, because it's not something we should want to overwrite back... */
+  }
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
+::-webkit-input-placeholder {
+  font-size: 1em;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--secondary-gray);
+}
+
+::-moz-placeholder {
+  font-size: 1em;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--secondary-gray);
+}
+
+:-ms-input-placeholder {
+  font-size: 1em;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--secondary-gray);
+}
+
+::-ms-clear {
+  display: none;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+/* Additional helpers */
+
+// Cross-browser same-element clear
+.clear-fix {
+  &::before,
+  &::after {
+    content: "";
+    display: table;
+  }
+  &::after {
+    clear: both;
+  }
+  zoom: 1;
+}
+
+// Global fix for material tab height
+.height-fix {
+  position: absolute;
+  height: 100%;
+  max-height: 100%;
+  width: 100%;
+}

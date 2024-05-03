@@ -1,0 +1,152 @@
+@use "../../../styles/variables/sass-color-variables";
+
+:host {
+  width: 100%;
+}
+
+.generate-with-ai {
+  display: flex;
+  flex-direction: column;
+}
+
+.heading {
+  padding: 20px 0;
+  color: var(--primary-gray);
+}
+
+.title {
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 35px;
+  color: var(--primary-gray);
+}
+
+button.back-button {
+  // padding: 0;
+  margin: 0;
+  background: transparent;
+  right: 25px;
+}
+
+.secondary-text {
+  line-height: 25px;
+}
+
+.cards-container {
+  display: flex;
+}
+
+mat-card {
+  flex: 1;
+  margin-right: 10px; /* Adjust the spacing between the mat-card elements */
+}
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-gap: 40px;
+}
+
+.image-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 320px;
+  // height: auto;
+}
+
+.image-container img {
+  width: 320px;
+  height: 320px;
+  border: 1px solid #cbcfd2 !important;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+
+button.download-btn {
+  align-self: flex-end;
+  color: var(--primary-blue);
+  padding: 0;
+  background: transparent;
+}
+
+mat-icon.icon {
+  width: 35px;
+  height: 35px;
+  font-size: 35px !important;
+}
+
+// mat-icon.download {
+//   width: 24px;
+//   height: 24px;
+//   font-size: 24px !important;
+// }
+
+.divider {
+  margin-top: 50px;
+}
+
+.actions {
+  padding-top: 40px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+button.gray-button {
+  // border-radius: 5px;
+  // background: #616161;
+  // border: 0;
+  // color: #fff;
+  // padding: 15px;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border-radius: 5px;
+  background: #616161;
+  border: 0;
+  color: #fff;
+  padding: 15px;
+}
+
+button.gray-button .button-content {
+  display: flex;
+  align-items: center;
+}
+
+button.submit .button-content {
+  display: flex;
+  align-items: center;
+}
+
+button.gray-button mat-icon {
+  margin-right: 5px;
+}
+
+.button-text {
+  display: inline-block;
+}
+
+button.submit {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border-radius: 5px;
+  background: var(--primary-blue);
+  border: 0;
+  color: #fff;
+  padding: 15px;
+}
+
+.left-15 {
+  margin-left: 15px;
+}
+
+.body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  flex-direction: column;
+  height: calc(100vh - 370px);
+}

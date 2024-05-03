@@ -1,0 +1,29 @@
+<div class="generated-designs-container">
+  <div class="container">
+    <div class="left-column">
+      <!-- Image grid content goes here -->
+      <div class="image-grid">
+        <div *ngFor="let image of images; index as i">
+          <img
+            [src]="'data:image/png;base64,' + image"
+            [id]="'myfile-' + i"
+            alt="Image"
+            class="grid-img"
+          />
+          <button (click)="download(i)">
+            <mat-icon>download</mat-icon>Download
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="right-column">
+      <div class="section">
+        <p class="score-card-section-title">Improvements made</p>
+        <p>
+          The design A is future iterated by the AI based on the actionable
+          insights identified from the test.
+        </p>
+      </div>
+    </div> -->
+  </div>
+</div>

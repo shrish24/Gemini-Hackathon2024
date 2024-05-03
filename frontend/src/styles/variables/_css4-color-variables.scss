@@ -1,0 +1,10 @@
+@use "./sass-color-variables" as colors;
+
+:root {
+  --primary-blue: #{colors.$primary-blue};
+  --primary-light-blue: #{colors.$light-blue};
+  --primary-light-gray: #{colors.$gray};
+  --primary-white: #ffffff;
+  --primary-gray: #{colors.$primary-gray};
+  --primary-red: #{colors.$primary-red};
+}

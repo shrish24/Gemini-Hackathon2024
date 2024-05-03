@@ -1,0 +1,78 @@
+<div class="test-summary-container">
+  <div class="summary-percentage">
+    <div class="template-img">
+      <img
+        src="{{ designTestSummary.imgSrc }}"
+        border="0"
+        alt="{{ designTestSummary.designName }}"
+      />
+    </div>
+    <div class="design-percentage">
+      <p class="design-title">{{ designTestSummary.designName }}</p>
+      <p class="percentage" [ngClass]="designTestSummary.className">
+        {{ designTestSummary.rating }}
+      </p>
+    </div>
+  </div>
+  <div class="result-summary">
+    <p class="section-title">Result Summary</p>
+    <p class="summary">{{ designTestSummary.resultSummary }}</p>
+  </div>
+  <div class="score-card">
+    <p class="section-title">Scorecard</p>
+    <div class="summary">
+      <!-- <div > -->
+      <!-- <div class="summary"> -->
+      <div
+        class="score-card-section"
+        *ngFor="let scorecardItem of designTestSummary.scoreCard"
+      >
+        <div class="section">
+          <p class="score-card-section-title">
+            {{ scorecardItem.sectionName }}
+          </p>
+          <p>{{ scorecardItem.description }}</p>
+        </div>
+        <div class="rating">
+          <span class="score">{{ scorecardItem.score }}</span
+          >/10
+        </div>
+      </div>
+      <!-- </div> -->
+      <!-- </div> -->
+    </div>
+  </div>
+  <div class="strengths">
+    <p class="section-title">Strengths</p>
+    <p class="summary list-container">
+      {{ designTestSummary.strengths }}
+      <!-- <mat-list>
+        <mat-list-item *ngFor="let item of designTestSummary.strengths">
+          {{ item }}</mat-list-item
+        >
+      </mat-list> -->
+    </p>
+  </div>
+  <div class="weakness">
+    <p class="section-title">Weakness</p>
+    <p class="summary list-container">
+      {{ designTestSummary.weaknesses }}
+      <!-- <mat-list>
+        <mat-list-item *ngFor="let item of designTestSummary.weaknesses">
+          {{ item }}</mat-list-item
+        >
+      </mat-list> -->
+    </p>
+  </div>
+  <div class="actions">
+    <button
+      mat-flat-button
+      class="submit"
+      (click)="
+        improveDesign(designTestSummary.designName, designTestSummary.imgSrc)
+      "
+    >
+      Improve this design
+    </button>
+  </div>
+</div>

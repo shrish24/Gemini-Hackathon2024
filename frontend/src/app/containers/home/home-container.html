@@ -1,0 +1,217 @@
+<div class="home-container">
+  <div
+    class="generate-with-ai"
+    *ngIf="(this.isLoading || this.isError); else showHome"
+  >
+    <div class="heading">
+      <p class="title">Generating A/B Test Results</p>
+      <p class="secondary-text">AI is preparing your test results!</p>
+    </div>
+    <div class="body">
+      <mat-spinner
+        [diameter]="70"
+        [strokeWidth]="2"
+        class="spinner"
+        *ngIf="this.isLoading"
+      ></mat-spinner>
+      <p>Please wait. It may take upto a minute time..</p>
+      <mat-card *ngIf="this.isError">
+        <mat-card-header>
+          <mat-card-title>Error</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p>{{errMessage}}</p>
+          <p>
+            <button mat-flat-button class="geneate-btn" (click)="resetForm()">
+              Reset & Start over
+            </button>
+          </p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+
+  <ng-template #showHome>
+    <div class="user-address">
+      <p class="title">Hello John Doe</p>
+      <p class="secondary-text">What would you like to test today?</p>
+    </div>
+    <div class="card-container">
+      <mat-card class="card left-card">
+        <!-- <gemini-home-step-one></gemini-home-step-one> -->
+        <div class="step-title-and-number">
+          <span>Start here by providing the designs for A/B testing</span>
+          <span class="step-number">1</span>
+        </div>
+        <div class="image-grid">
+          <div class="image-item" *ngFor="let image of images; index as i">
+            <input
+              type="file"
+              class="file-input"
+              [accept]="requiredFileType"
+              (change)="onFileSelected($event, i)"
+              [id]="'fileUpload' + i"
+            />
+            <img
+              [src]="image.url"
+              [id]="'myfile-' + i"
+              alt="Image"
+              class="grid-img"
+              (click)="launchFileUpload(i)"
+            />
+            <!-- <button (click)="removeImage(image)">Remove</button> -->
+          </div>
+        </div>
+        <div class="add-more">
+          <button class="add-more-btn" (click)="addMoreImages()">
+            Add More
+          </button>
+        </div>
+        <div class="generate-btn-section">
+          <button
+            mat-flat-button
+            class="geneate-btn"
+            (click)="router.navigate(['/generate-with-ai']);"
+          >
+            Don't have designs ready? AI - Generate some designs to test!
+          </button>
+        </div>
+      </mat-card>
+      <mat-card class="card">
+        <!-- <gemini-home-step-two></gemini-home-step-two> -->
+        <div class="step-title-and-number">
+          <span class="body-text"
+            >Provide more details about the test and its objectives.</span
+          >
+          <span class="step-number">2</span>
+        </div>
+        <form autocomplete="off" [formGroup]="homePageFormGroup">
+          <div class="form-group">
+            <div class="label-row body-text">
+              <label for="projectName">Project Name</label>
+            </div>
+            <div class="input-row">
+              <input
+                type="text"
+                id="projectName"
+                name="projectName"
+                formControlName="project_name"
+                placeholder="Enter the project name"
+              />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="label-row body-text">
+              <!-- <label for="projectName">Project Name</label> -->
+              <label for="testArea">Test Area</label>
+            </div>
+            <div class="input-row">
+              <input
+                type="text"
+                id="testArea"
+                name="testArea"
+                formControlName="test_area"
+                placeholder="Usability, Marketing, Visual Appearance etc.,"
+              />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="label-row body-text">
+              <label for="targetUsers">Target Users</label>
+            </div>
+            <div class="input-row">
+              <input
+                type="text"
+                id="targetUsers"
+                name="targetUsers"
+                formControlName="target_users"
+                placeholder="What kind of personas you would like to test your design with?"
+              />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="label-row body-text">
+              <label for="testObjectives">Test Objectives</label>
+            </div>
+            <div class="input-row">
+              <textarea
+                id="testObjectives"
+                name="testObjectives"
+                formControlName="test_objectives"
+                rows="5"
+                placeholder="Ex: Test the design for usability"
+              ></textarea>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="label-row body-text">
+              <label for="projectName">Test Parameters</label>
+            </div>
+            <!-- <div class="input-row1"> -->
+            <div class="btns">
+              <div
+                class="example-flex-container"
+                *ngFor="let testParam of testParams; index as i"
+              >
+                <button
+                  [disabled]="testParams.length === 1"
+                  class="chip-btn"
+                  (click)="removeTestParam(i)"
+                >
+                  {{ testParam }}
+                  <mat-icon>x</mat-icon>
+                  <!-- <mat-icon svgIcon="icon-close" class="icon"></mat-icon> -->
+                </button>
+              </div>
+            </div>
+            <!-- <mat-chip-list #chipList>
+                <mat-chip *ngFor="let testParam of testParams"
+                  >{{ testParam }}<mat-icon matChipRemove>cancel</mat-icon></mat-chip
+                >
+              </mat-chip-list> -->
+            <!-- </div> -->
+          </div>
+          <div class="form-group">
+            <div class="input-row other-parameters">
+              <input
+                type="text"
+                #chipInput
+                name="otherParameters"
+                placeholder="What other parameters you would like to test your design with?"
+              />
+              <button
+                mat-raised-button
+                class="add-btn"
+                (click)="addTestParam(chipInput.value); chipInput.value = ''"
+              >
+                Add
+              </button>
+            </div>
+          </div>
+        </form>
+      </mat-card>
+    </div>
+    <div class="action-buttons">
+      <div class="recommendations">
+        <mat-slide-toggle
+          [checked]="includeRecommendations"
+          (change)="updateIncludeRecommendations($event)"
+          >Include recommendations and suggest design based on the
+          results</mat-slide-toggle
+        >
+      </div>
+      <div class="btns">
+        <button mat-flat-button class="reset" (click)="resetForm()">
+          Reset & start over
+        </button>
+        <button mat-flat-button class="submit" (click)="submitForm()">
+          Start A/B Testing
+        </button>
+      </div>
+    </div>
+  </ng-template>
+</div>

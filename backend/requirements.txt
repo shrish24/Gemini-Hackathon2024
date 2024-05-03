@@ -1,0 +1,11 @@
+vertexai
+Pillow
+Flask
+aiohttp
+beautifulsoup4
+opencv-python-headless==4.5.5.62
+selenium
+Selenium-Screenshot
+PyYAML
+pillow
+flask-cors
